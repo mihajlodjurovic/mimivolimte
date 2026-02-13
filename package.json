@@ -1,0 +1,10 @@
+{
+  "name": "valentines-game",
+  "version": "1.0.0",
+  "description": "Valentine's Day game for Mia",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build needed for static site'"
+  }
+}
