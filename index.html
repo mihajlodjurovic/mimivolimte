@@ -102,6 +102,18 @@
             height: calc(100% - 80px);
             position: relative;
             background: linear-gradient(180deg, #ffe0f0 0%, #fff5f8 100%);
+            overflow: hidden;
+        }
+
+        .background-text {
+            position: absolute;
+            font-size: 3em;
+            font-weight: bold;
+            opacity: 0.08;
+            color: #ff69b4;
+            user-select: none;
+            pointer-events: none;
+            white-space: nowrap;
         }
 
         #stats {
@@ -222,6 +234,12 @@
                 <div>Hearts: <span id="score">0</span>/<span id="target">10</span></div>
             </div>
             <div id="gameArea">
+                <div class="background-text" style="top: 10%; left: 5%;">djura ❤️</div>
+                <div class="background-text" style="top: 25%; right: 5%;">mimi 💕</div>
+                <div class="background-text" style="top: 40%; left: 10%;">💖 djura</div>
+                <div class="background-text" style="top: 55%; right: 8%;">mimi 💗</div>
+                <div class="background-text" style="top: 70%; left: 15%;">❤️ love</div>
+                <div class="background-text" style="top: 85%; right: 12%;">forever 💕</div>
                 <div id="basket">🧺</div>
             </div>
         </div>
@@ -299,9 +317,17 @@
         function spawnHeart() {
             const heart = document.createElement('div');
             heart.className = 'heart';
-            heart.textContent = Math.random() > 0.8 ? '💖' : '❤️';
             heart.style.left = Math.random() * 90 + 5 + '%';
             heart.style.top = '-50px';
+            
+            // Različita srca za svaki nivo
+            if (gameState.level === 1) {
+                heart.textContent = Math.random() > 0.8 ? '💖' : '❤️';
+            } else if (gameState.level === 2) {
+                heart.textContent = Math.random() > 0.8 ? '💕' : '💗';
+            } else if (gameState.level === 3) {
+                heart.textContent = Math.random() > 0.8 ? '💝' : '💞';
+            }
             
             const levelIndex = gameState.level - 1;
             const fallDuration = gameState.speeds[levelIndex];
